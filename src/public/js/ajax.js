@@ -34,8 +34,7 @@ $(document).ready(function() {
         }
         $data = JSON.stringify($data);
         $.post("/login/checklogin/" + $data, function(data) {
-            if (data) {
-                setCookie("id_user", data, 5);
+            if (data != "false") {
                 location.reload();
             } else {
                 $("#login_alert").removeClass("d-none");

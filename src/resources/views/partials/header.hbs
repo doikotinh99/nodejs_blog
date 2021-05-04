@@ -66,10 +66,27 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">{{user.user_firstname}}</a>
+        </li>
       </ul>
+      
       <div class="d-flex">
-        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalLogin">Login</button>
-        <button type="button" class="btn btn-light ms-1" data-bs-toggle="modal" data-bs-target="#ModalRegis">Regis</button>
+        {{#if user}}
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            {{user.user_firstname}}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">logout</a></li>
+          </ul>
+        </div>
+          
+        {{/if}}
+        {{#else}}
+          <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalLogin">Login</button>
+          <button type="button" class="btn btn-light ms-1" data-bs-toggle="modal" data-bs-target="#ModalRegis">Regis</button>
+        {{/else}}
       </div>
     </div>
   </div>

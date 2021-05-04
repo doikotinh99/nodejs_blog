@@ -1,7 +1,9 @@
 const db = require("../config/db");
 const bcrypt = require('bcrypt');
+var session = require('express-session');
 var query = "";
 var data = [];
+var res;
 class UserModel {
     CheckRegis(dataJson) {
         dataJson = JSON.parse(dataJson);
@@ -26,24 +28,23 @@ class UserModel {
     CheckLogin(dataJson) {
         dataJson = JSON.parse(dataJson);
         query = "SELECT * FROM `user` WHERE `user_name` = '" + dataJson.user_name + "'";
+
         db.query(query, function(error, results, fields) {
             if (!error) {
                 if (results) {
-                    console.log(results[0].password + ", pass = " + dataJson.pass);
                     if (bcrypt.compareSync(dataJson.pass, results[0].password)) {
-                        data = results[0].id;
-                        data = data.toString();
+                        return res = JSON.stringify(results[0]);
                     } else {
-                        data = false;
+                        return false;
                     }
                 } else {
-                    data = false;
+                    return false;
                 }
             } else {
-                data = false;
+                return false;
             }
         });
-        return data;
+        return res;
 
     }
 }

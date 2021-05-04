@@ -7,7 +7,7 @@ class Product_models {
                 data = false;
                 return error;
             } else {
-                data = results;
+                return data = results;
             }
         });
         return data;
