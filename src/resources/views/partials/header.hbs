@@ -78,15 +78,13 @@
             {{user.user_firstname}}
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">logout</a></li>
+            <li><a class="dropdown-item" href="/login/logout">logout</a></li>
           </ul>
         </div>
           
         {{/if}}
-        {{#else}}
           <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalLogin">Login</button>
           <button type="button" class="btn btn-light ms-1" data-bs-toggle="modal" data-bs-target="#ModalRegis">Regis</button>
-        {{/else}}
       </div>
     </div>
   </div>

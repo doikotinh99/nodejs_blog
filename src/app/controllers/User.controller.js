@@ -17,5 +17,10 @@ class UserController {
         }
         return res.send("false");
     }
+    logout(req, res) {
+        console.log(req.session.user);
+        req.session.destroy();
+        res.redirect("/");
+    }
 }
 module.exports = new UserController;
